@@ -1,0 +1,54 @@
+# pytorch_lightning==1.7.5
+seed_everything: 0
+trainer:
+  sync_batchnorm: true
+  max_epochs: 150
+  log_every_n_steps: 1
+  precision: 16
+model:
+  num_points: 1024
+  tokenizer_num_groups: 64
+  tokenizer_group_size: 32
+  tokenizer_group_radius: null # 0.15 works best
+  encoder_dim: 384
+  encoder_depth: 12
+  encoder_heads: 6
+  encoder_dropout: 0.0
+  encoder_attention_dropout: 0.0
+  encoder_drop_path_rate: 0.2
+  encoder_add_pos_at_every_layer: true
+  cls_head: mlp
+  cls_head_dim: 256
+  cls_head_dropout: 0.5
+  cls_head_pooling: mean+max
+  loss_label_smoothing: 0.2
+  learning_rate: 0.001
+  optimizer_adamw_weight_decay: 0.05
+  lr_scheduler_linear_warmup_epochs: 10
+  lr_scheduler_linear_warmup_start_lr: 1.0e-06
+  lr_scheduler_cosine_eta_min: 1.0e-06
+  pretrained_ckpt_path: null
+  train_transformations:
+  - "scale"
+  - "center"
+  - "unit_sphere"
+  val_transformations:
+  - "center"
+  - "unit_sphere"
+  transformation_scale_min: 0.6
+  transformation_scale_max: 1.4
+  transformation_scale_symmetries: [0, 0, 0] # TODO: check if [1,0,1] is better/worse
+  transformation_rotate_dims: [1]
+  transformation_rotate_degs: 90
+  transformation_translate: 0.2
+  transformation_height_normalize_dim: 1
+  log_tsne: false
+  log_confusion_matrix: false
+data:
+  class_path: point2vec.datasets.ModelNet40FewShotDataModule
+  init_args:
+    data_dir: ./data/ModelNetFewshot
+    batch_size: 32
+    fold: 0
+    way: 10
+    shot: 10

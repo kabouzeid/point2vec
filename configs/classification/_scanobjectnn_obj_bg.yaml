@@ -1,0 +1,8 @@
+# pytorch_lightning==1.7.2
+data:
+  class_path: point2vec.datasets.ScanObjectNNDataModule
+  init_args:
+    data_dir: ./data/ScanObjectNN
+    split: main_split
+    perturbed: false
+    batch_size: 32

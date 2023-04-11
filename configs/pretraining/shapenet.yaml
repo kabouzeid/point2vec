@@ -1,0 +1,88 @@
+# pytorch_lightning==1.7.2
+seed_everything: 0
+trainer:
+  sync_batchnorm: true
+  # gradient_clip_val: null
+  # gradient_clip_algorithm: null
+  max_epochs: 800
+  # log_every_n_steps: 50
+  precision: 16
+  # callbacks:
+  # - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+  #   init_args:
+  #     monitor: svm_val_acc_modelnet40
+  #     mode: max
+  #     filename: "{epoch}-{step}-{svm_val_acc_modelnet40:.4f}"
+  # - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+  #   init_args:
+  #     monitor: svm_val_acc_scanobjectnn
+  #     mode: max
+  #     filename: "{epoch}-{step}-{svm_val_acc_scanobjectnn:.4f}"
+model:
+  tokenizer_num_groups: 64
+  tokenizer_group_size: 32
+  tokenizer_group_radius: null
+  d2v_masking_ratio: 0.65
+  d2v_masking_type: rand
+  encoder_dim: 384
+  encoder_depth: 12
+  encoder_heads: 6
+  encoder_dropout: 0.0
+  encoder_attention_dropout: 0.05
+  encoder_drop_path_rate: 0.25
+  encoder_add_pos_at_every_layer: true
+  decoder: true
+  decoder_depth: 4
+  decoder_dropout: 0.0
+  decoder_attention_dropout: 0.05
+  decoder_drop_path_rate: 0.25
+  decoder_add_pos_at_every_layer: true
+  d2v_target_layers: [6, 7, 8, 9, 10, 11]
+  d2v_target_layer_part: final
+  d2v_target_layer_norm: layer
+  d2v_target_norm: layer
+  d2v_ema_tau_min: 0.9998
+  d2v_ema_tau_max: 0.99999
+  d2v_ema_tau_epochs: 200
+  loss: smooth_l1
+  learning_rate: 1e-3
+  optimizer_adamw_weight_decay: 0.05
+  lr_scheduler_linear_warmup_epochs: 80
+  lr_scheduler_linear_warmup_start_lr: 1e-6
+  lr_scheduler_cosine_eta_min: 1e-6
+  train_transformations:
+  - "subsample"
+  - "scale"
+  - "center"
+  - "unit_sphere"
+  - "rotate"
+  val_transformations:
+  - "subsample"
+  - "center"
+  - "unit_sphere"
+  transformation_subsample_points: 1024
+  transformation_scale_min: 0.8
+  transformation_scale_max: 1.2
+  transformation_scale_symmetries: [1, 0, 1]
+  transformation_rotate_dims: [1]
+  transformation_rotate_degs: null
+  transformation_translate: 0.2
+  transformation_height_normalize_dim: 1
+  svm_validation:
+    modelnet40:
+      class_path: point2vec.datasets.ModelNet40Ply2048DataModule
+      init_args:
+        data_dir: ./data/modelnet40_ply_hdf5_2048
+        batch_size: 256
+        drop_last: false
+    scanobjectnn:
+      class_path: point2vec.datasets.ScanObjectNNDataModule
+      init_args:
+        data_dir: ./data/ScanObjectNN
+        batch_size: 256
+        drop_last: false
+data:
+  class_path: point2vec.datasets.ShapeNet55DataModule
+  init_args:
+    data_dir: ./data/ShapeNet55
+    batch_size: 512 # needs around 13GB of GPU RAM with fp16

@@ -1,0 +1,50 @@
+# pytorch_lightning==1.7.2
+seed_everything: 0
+trainer:
+  sync_batchnorm: true
+  # gradient_clip_val: null
+  # gradient_clip_algorithm: null
+  max_epochs: 300
+  precision: 16
+model:
+  tokenizer_num_groups: 128
+  tokenizer_group_size: 32
+  tokenizer_group_radius: null
+  encoder_dim: 384
+  encoder_depth: 12
+  encoder_heads: 6
+  encoder_dropout: 0.0
+  encoder_attention_dropout: 0.0
+  encoder_drop_path_rate: 0.1
+  encoder_add_pos_at_every_layer: true
+  seg_head_fetch_layers:
+  - 3
+  - 7
+  - 11
+  seg_head_dim: 512
+  seg_head_dropout: 0.5
+  learning_rate: 0.0002
+  optimizer_adamw_weight_decay: 0.05
+  lr_scheduler_linear_warmup_epochs: 10
+  lr_scheduler_linear_warmup_start_lr: 1.0e-06
+  lr_scheduler_cosine_eta_min: 1.0e-06
+  pretrained_ckpt_path: null
+  train_transformations:
+  - "scale"
+  - "center"
+  - "unit_sphere"
+  val_transformations:
+  - "center"
+  - "unit_sphere"
+  transformation_scale_min: 0.8
+  transformation_scale_max: 1.25
+  transformation_scale_symmetries: [0, 0, 0]
+  transformation_rotate_dims: [1]
+  transformation_rotate_degs: null
+  transformation_translate: 0.2
+  transformation_height_normalize_dim: 1
+data:
+  class_path: point2vec.datasets.ShapeNetPartDataModule
+  init_args:
+    data_dir: ./data/shapenetcore_partanno_segmentation_benchmark_v0_normal
+    batch_size: 16
