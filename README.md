@@ -2,6 +2,14 @@
 
 Self-Supervised Representation Learning on Point Clouds
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/point2vec-for-self-supervised-representation/3d-point-cloud-classification-on-modelnet40)](https://paperswithcode.com/sota/3d-point-cloud-classification-on-modelnet40?p=point2vec-for-self-supervised-representation)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/point2vec-for-self-supervised-representation/3d-point-cloud-classification-on-scanobjectnn)](https://paperswithcode.com/sota/3d-point-cloud-classification-on-scanobjectnn?p=point2vec-for-self-supervised-representation)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/point2vec-for-self-supervised-representation/3d-part-segmentation-on-shapenet-part)](https://paperswithcode.com/sota/3d-part-segmentation-on-shapenet-part?p=point2vec-for-self-supervised-representation)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/point2vec-for-self-supervised-representation/few-shot-3d-point-cloud-classification-on-3)](https://paperswithcode.com/sota/few-shot-3d-point-cloud-classification-on-3?p=point2vec-for-self-supervised-representation)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/point2vec-for-self-supervised-representation/few-shot-3d-point-cloud-classification-on-4)](https://paperswithcode.com/sota/few-shot-3d-point-cloud-classification-on-4?p=point2vec-for-self-supervised-representation)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/point2vec-for-self-supervised-representation/few-shot-3d-point-cloud-classification-on-1)](https://paperswithcode.com/sota/few-shot-3d-point-cloud-classification-on-1?p=point2vec-for-self-supervised-representation)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/point2vec-for-self-supervised-representation/few-shot-3d-point-cloud-classification-on-2)](https://paperswithcode.com/sota/few-shot-3d-point-cloud-classification-on-2?p=point2vec-for-self-supervised-representation)
+
 [[`Paper`](https://arxiv.org/abs/2303.16570)] [[`Project`](https://point2vec.ka.codes)] [[`BibTeX`](#citing-point2vec)]
 
 ![architecture](https://user-images.githubusercontent.com/7303830/229210206-3df19b2c-f0bf-46ee-b0c2-d1ec1a3123d4.png)
