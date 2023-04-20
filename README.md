@@ -24,9 +24,6 @@ Self-Supervised Representation Learning on Point Clouds
 - GCC >= 6 and <= 11.2.1
 
 ```bash
-pyenv virtualenv 3.10.4 point2vec
-pyenv activate point2vec
-
 pip install -U pip wheel
 pip install torch torchvision -c requirements.txt --extra-index-url https://download.pytorch.org/whl/cu116
 pip install -r requirements.txt
