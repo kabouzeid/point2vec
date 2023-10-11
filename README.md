@@ -189,10 +189,10 @@ Both a random initialization and data2vec&ndash;pc pre-training show a fairly st
 If you use point2vec in your research, please use the following BibTeX entry.
 
 ```
-@article{abouzeid2023point2vec,
+@inproceedings{abouzeid2023point2vec,
   title={Point2Vec for Self-Supervised Representation Learning on Point Clouds},
   author={Abou Zeid, Karim and Schult, Jonas and Hermans, Alexander and Leibe, Bastian},
-  journal={arXiv preprint arXiv:2303.16570},
+  journal={German Conference on Pattern Recognition (GCPR)},
   year={2023},
 }
 ```
